@@ -55,3 +55,18 @@ int parse_file(const char *filename, Config *config) {
     fclose(file);
     return 0; // 成功
 }
+
+//添加行统计功能
+
+int count_lines(const char *filename) {
+    FILE *file = fopen(filename, "r");
+    if (!file) return -1;
+    
+    int count = 0;
+    int c;
+    while ((c = fgetc(file)) != EOF) {
+        if (c == '\n') count++;
+    }
+    fclose(file);
+    return count;
+}
